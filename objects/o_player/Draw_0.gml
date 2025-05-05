@@ -5,3 +5,4 @@ draw_text(120,60,intangible_time);
 draw_text(150,60,intangible_touch);
 if(parede_proxima != noone) draw_text(180,60,parede_proxima.usada);
 draw_text(210,60,parede);
+draw_text(240,60,atravessando);

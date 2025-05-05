@@ -11,22 +11,39 @@ _dir = (_right - _left); // Determina a direção que o player está andando
 
 if (recharging || intangible_touch) _intangible = false; // Controle do poder de intangibilidade
 
+dash_duration = max(dash_duration - 1,0)
+
 //------------------------------------------------------------------------------------//
 
-velv = velv + grav; // Aplica gravidade no player
-velv = clamp(velv,-velv_max,velv_max); // Limita a velocidade vertical
-
-velh = velh + acc * _dir // Movimento horizontal do player
-velh = clamp(velh,-vel,vel); // Limita a velocidade horizontal
-
-if(_dir == 0) {
+if(dash_duration > 0) {
 	
-	estado = "parado";
-	velh = lerp(velh,0,dcc); // Desacerela o player se ele não está andando
-	
+	velv = 0;
 } else {
 	
-	estado = "anda";
+	velv = velv + grav; // Aplica gravidade no player
+	velv = clamp(velv,-velv_max,velv_max); // Limita a velocidade vertical
+}
+
+if(dash && dash_duration == 0) {
+	
+	dash_duration = 10;
+	velh = _dir * dash_vel;
+	dash = false;
+	
+} else if (dash_duration == 0) {
+	
+	velh = velh + acc * _dir // Movimento horizontal do player
+	velh = clamp(velh,-vel,vel); // Limita a velocidade horizontal
+
+	if(_dir == 0) {
+	
+		estado = "parado";
+		velh = lerp(velh,0,dcc); // Desacerela o player se ele não está andando
+	
+	} else {
+	
+		estado = "anda";
+	}
 }
 
 if(place_meeting(x+velh,y,o_wall)){
@@ -249,7 +266,7 @@ if(atravessando) {
 		
 		if(keyboard_check_pressed(ord("K"))) {
 			
-			x += (120 * _dir);
+			dash = true;
 			atravessando = false;
 		}
 	}

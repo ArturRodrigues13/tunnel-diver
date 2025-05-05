@@ -33,4 +33,7 @@ recharging = false; // Determina se o player está recarregando a habilidade de 
 recharge_time = 60; // Tempo mínimo que o player precisa esperar antes de poder usar o poder novamente
 tempo_atravessado = 0;
 tempo_atravessado_maximo = 10;
+dash = false;
+dash_vel = 15;
+dash_duration = 0;
 
