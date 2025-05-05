@@ -11,26 +11,26 @@ _dir = (_right - _left); // Determina a direção que o player está andando
 
 if (recharging || intangible_touch) _intangible = false; // Controle do poder de intangibilidade
 
-dash_duration = max(dash_duration - 1,0)
+dash_duration = max(dash_duration - 1,0) // Diminui a duração do dash em 1 por step
 
 //------------------------------------------------------------------------------------//
 
-if(dash_duration > 0) {
+if(dash_duration > 0) { // Se está usando o dash
 	
-	velv = 0;
+	velv = 0; // Não tem gravidade aplicada
 } else {
 	
 	velv = velv + grav; // Aplica gravidade no player
 	velv = clamp(velv,-velv_max,velv_max); // Limita a velocidade vertical
 }
 
-if(dash && dash_duration == 0) {
+if(dash && dash_duration == 0) { // Se usou o dash 
 	
 	dash_duration = 10;
-	velh = _dir * dash_vel;
-	dash = false;
+	velh = _dir * dash_vel; // Faz o dash;
+	dash = false; // Não permite usar novamente logo em sequência
 	
-} else if (dash_duration == 0) {
+} else if (dash_duration == 0) { // Se não está usando o dash
 	
 	velh = velh + acc * _dir // Movimento horizontal do player
 	velh = clamp(velh,-vel,vel); // Limita a velocidade horizontal
@@ -110,7 +110,7 @@ if (chao = false) estado = "pula";
 
 if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false) { // Player está em uma parede horizontalmente e fora do chão
 
-	tempo_parede = 0; 
+	tempo_parede = 0;
 	parede = true; // Avisa ao jogo que o player está em uma parede
 	var _esquerda = instance_place(x-1,y,o_wall); // Verifica se há uma parede na esquerda
 	var _direita = instance_place(x+1,y,o_wall); // Verifica se há uma parede na direita
@@ -179,7 +179,7 @@ if(keyboard_check_released(ord("J"))) intangible_touch = false; // Se soltou o b
 
 if(_intangible) { // Está usando o poder
 	
-	if(place_meeting(x,y,o_traversable)) atravessando = true;
+	if(place_meeting(x,y,o_traversable)) atravessando = true; // Se está dentro de uma parede, tá atravessando ela
 	tempo_atravessado = 0;
 	intangible_time--; // Gasta o poder
 	
@@ -192,9 +192,9 @@ if(_intangible) { // Está usando o poder
 	
 	intangible_time++; // Recarrega o poder
 	
-	tempo_atravessado ++;
+	tempo_atravessado ++; // Aumenta o tempo ao sair de uma parede
 	
-	if(tempo_atravessado >= tempo_atravessado_maximo) { 
+	if(tempo_atravessado >= tempo_atravessado_maximo) { // Ao passar o tempo máximo, desliga a janela de dash
 		
 		atravessando = false;
 		tempo_atravessado = 0;
@@ -257,17 +257,17 @@ if(!_intangible) && place_meeting(x,y,o_traversable) { // Não está intangível
 
 //------------------------------------------------------------------------------------//
 
-if(atravessando) {
+if(atravessando) { // Se está atravessando uma parede
 
 	chao = false;
 	pulo_duplo = false;
 	
-	if(!place_meeting(x,y,o_traversable)) {
+	if(!place_meeting(x,y,o_traversable)) { // Se saiu da parede mas continua com a janela de dash aberta
 		
 		if(keyboard_check_pressed(ord("K"))) {
 			
-			dash = true;
-			atravessando = false;
+			dash = true; // Usou o dash
+			atravessando = false; // Não permite outro uso
 		}
 	}
 }

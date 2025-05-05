@@ -21,3 +21,16 @@ draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true);
 
 draw_set_color(c_white);
 
+var _t = "";
+
+_t += string(tempo_min);
+_t += ".";
+if(tempo_seg > 9) _t += "" + string(tempo_seg);
+if(tempo_seg < 10) _t += "0" + string(tempo_seg);
+_t += ".";
+_t += string(tempo_miliseg);
+
+draw_text(100,100,_t);
+
+
+
