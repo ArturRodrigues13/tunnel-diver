@@ -9,7 +9,7 @@ _jump_segurar = keyboard_check(vk_space); // Verifica se o usuário está segura
 _intangible = keyboard_check(ord("J")); // Ativar intangibilidade
 _dir = (_right - _left); // Determina a direção que o player está andando
 
-if (recharging || intangible_touch) _intangible = false; // Controle do poder de intangibilidade
+if (recharging || intangible_touch || poderes[1] == 0) _intangible = false; // Controle do poder de intangibilidade
 
 dash_duration = max(dash_duration - 1,0) // Diminui a duração do dash em 1 por step
 
@@ -148,12 +148,16 @@ if(_jump){
 		
 	} else if(!parede) { // Pulo fora da parede e fora do chão
 
+		if(poderes[0] == 0) pulo_duplo = false;
+		
 		if(pulo_duplo == true) { // Se não usou ainda, pulo duplo liberado
 			
 			velv = 0 - altura_pulo_duplo;
 			pulo_duplo = false;
 		}
 	} else { // Pulo em uma parede e fora do chão
+		
+		if(parede_proxima != noone) if(poderes[0] == 0) parede_proxima.usada = true;
 		
 		if(parede_proxima != noone) if(parede_proxima.usada == false) { // Se ainda não usou ela
 			
@@ -164,7 +168,7 @@ if(_jump){
 	}
 }
 
-if(parede) if(velv > 0) velv = 1.5 // Descer lentamente da parede
+if(poderes[0] == 1) if(parede) if(velv > 0) velv = 1.5 // Descer lentamente da parede
 
 //------------------------------------------------------------------------------------//
 
@@ -172,6 +176,8 @@ if(place_meeting(x,y,o_finish)) { // Player chegou no final do nível
 	
 	room_goto_next();
 }
+
+if(y > room_height * 1.5) room_restart();
 
 //------------------------------------------------------------------------------------//
 

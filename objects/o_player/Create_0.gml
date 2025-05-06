@@ -38,3 +38,6 @@ dash = false; // Verifica se o player usou o dash ou não
 dash_vel = 15; // Velocidade do dash
 dash_duration = 0; // Duração do dash
 
+//------------------------------------------------------------------------------------//
+
+poderes = global.player_poderes;

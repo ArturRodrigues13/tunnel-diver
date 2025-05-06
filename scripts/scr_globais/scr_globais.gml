@@ -1,0 +1,1 @@
+global.player_poderes = [0,0];
