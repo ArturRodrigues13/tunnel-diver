@@ -1,4 +1,4 @@
-switch(item_atual) {
+switch(item_atual) { // Verifica qual item ele é baseado em uma variável de instância
 	 
 	case 0:
 		
@@ -6,7 +6,8 @@ switch(item_atual) {
 		break;
 	
 	case 1:
-		
+	
+		// Outros itens...
 		break;
  
 	default:

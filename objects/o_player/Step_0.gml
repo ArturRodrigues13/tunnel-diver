@@ -90,6 +90,7 @@ if(place_meeting(x,y+1,o_wall) || place_meeting(x,y+1,o_traversable)) { // Playe
 	
 	if(!_intangible) chao = true;
 	if(!_intangible) pulo_duplo = true; // Pulo duplo liberado
+	// deslizar = 0;
 	tempo = 0;
 	with (o_wall) usada = false; // Reseta o pulo em todas as paredes
 	
@@ -105,12 +106,12 @@ if(place_meeting(x,y+1,o_wall) || place_meeting(x,y+1,o_traversable)) { // Playe
 	}
 }
 
-
 if (chao = false) estado = "pula";
 
 if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false) { // Player está em uma parede horizontalmente e fora do chão
 
 	tempo_parede = 0;
+	// deslizar ++;
 	parede = true; // Avisa ao jogo que o player está em uma parede
 	var _esquerda = instance_place(x-1,y,o_wall); // Verifica se há uma parede na esquerda
 	var _direita = instance_place(x+1,y,o_wall); // Verifica se há uma parede na direita
@@ -128,10 +129,11 @@ if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false
 	
 } else { // Player está fora da parede
 	
-	tempo_parede ++ 
+	if(parede && poderes[0] == 1) tempo_parede ++;
 	
 	if(tempo_parede >= tempo_parede_maximo) { // Player passou muito tempo fora de uma parede
-		
+
+		if(!parede_proxima.usada) velv = 4; // Se saiu de uma parede sem usar poder a gravidade já começa forte
 		parede = false;
 		tempo_parede = 0;
 	}
@@ -168,7 +170,7 @@ if(_jump){
 	}
 }
 
-if(poderes[0] == 1) if(parede) if(velv > 0) velv = 1.5 // Descer lentamente da parede
+if(poderes[0] == 1) if(parede) if(velv > 0) velv = .7 // Deslizar em uma parede // deslizar / 60
 
 //------------------------------------------------------------------------------------//
 
@@ -177,7 +179,7 @@ if(place_meeting(x,y,o_finish)) { // Player chegou no final do nível
 	room_goto_next();
 }
 
-if(y > room_height * 1.5) room_restart();
+if(y > room_height * 1.5) room_restart(); // Se o player caiu pro abismo, F
 
 //------------------------------------------------------------------------------------//
 
