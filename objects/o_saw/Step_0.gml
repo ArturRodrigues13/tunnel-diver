@@ -4,7 +4,7 @@ rotacao += 7; // Aumenta a rotacao
 
 if(rotacao > 360) rotacao = 0; // Volta pra 0 sempre que passar 360
 
-if(place_meeting(x,y,o_player)) room_restart(); // Player tocou na serra = morte
+if(place_meeting(x,y,o_player)) global.morreu = true; // Player tocou na serra = morte
 
 if(estatico) exit // Se ela não for se mover, não executa o que está abaixo
 
@@ -40,105 +40,5 @@ if (horizontal) { // Movimento interpolado com base na direção
 		
 		// Faz a volta do caminho levando em consideração se a serra começou de baixo pra cima (true) ou de cima pra baixo (false)
 		y = cima ? y_inicial - (movimento * (1 - dist)) : y_inicial + (movimento * (1 - dist));
-	}
-}
-
-/*
-
-if(horizontal){
-		
-	if(indo && !esquerda) {
-		
-		if((x + 10) >= x_inicial + movimento) { 
-			
-			vel = 1
-			x = int64(x)
-		}
-		
-		if(x <=  x_inicial + movimento) {
-			
-			x += (vel * direcao_h);
-		} else {
-			
-			show_debug_message(movimento);
-			show_debug_message(vel);
-			show_debug_message(x_inicial + movimento);
-			show_debug_message(x);
-			indo = false;
-		}
-	} else if (indo && esquerda) {
-		
-		
-			
-		if(x >=  x_inicial - movimento) {
-			
-			x += (vel * direcao_h);
-		} else {
-			
-			indo = false;
-		}
-	} else if (!indo && !esquerda) {
-		
-		if((x - 10) <= x_inicial) { 
-			
-			vel = 1
-			x = int64(x)
-		}
-		
-		x += (vel * -direcao_h);
-			
-		if(x_inicial >= x) {
-			
-			show_debug_message(movimento);
-			show_debug_message(vel);
-			show_debug_message(x_inicial);
-			show_debug_message(x);
-			indo = true
-		}
-	} else {
-			
-		x += (vel * -direcao_h);
-			
-		if(x >= x_inicial) {
-			
-			indo = true
-		}
-	}
-} else {
-		
-	if(indo && !cima) {
-			
-		if(y <=  y_inicial + movimento) {
-			
-			y += (vel * direcao_v);
-		} else {
-			
-			indo = false;
-		}
-	} else if (indo && cima) {
-			
-		if(y >=  y_inicial - movimento) {
-			
-			y += (vel * direcao_v);
-		} else {
-			
-			indo = false;
-		}
-	} else if (!indo && !cima) {
-		
-		y += (vel * -direcao_v);
-			
-		if(y_inicial >= y) {
-			
-			indo = true
-		}
-	} else {
-			
-		y += (vel * -direcao_v);
-			
-		if(y >= y_inicial) {
-			
-			indo = true
-		}
 	}
 }

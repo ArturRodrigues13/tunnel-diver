@@ -8,7 +8,7 @@ acc = .6; // Acerelação
 dcc = .6; // Desacerelação
 grav = 0.4; // Força da gravidade
 
-altura_pulo = 18; // Autura do pulo 
+altura_pulo = 9; // Autura do pulo 
 altura_pulo_duplo = 6; // Altura do pulo duplo
 pulo_duplo = true; // Determina se o player pode usar o pulo duplo
 chao = false; // Determina se o player está no chão ou não

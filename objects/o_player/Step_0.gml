@@ -129,11 +129,10 @@ if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false
 	
 } else { // Player está fora da parede
 	
-	if(parede && poderes[0] == 1) tempo_parede ++;
+	tempo_parede ++;
 	
 	if(tempo_parede >= tempo_parede_maximo) { // Player passou muito tempo fora de uma parede
 
-		if(!parede_proxima.usada) velv = 4; // Se saiu de uma parede sem usar poder a gravidade já começa forte
 		parede = false;
 		tempo_parede = 0;
 	}
@@ -178,8 +177,6 @@ if(place_meeting(x,y,o_finish)) { // Player chegou no final do nível
 	
 	room_goto_next();
 }
-
-if(y > room_height * 1.5) room_restart(); // Se o player caiu pro abismo, F
 
 //------------------------------------------------------------------------------------//
 
@@ -278,4 +275,14 @@ if(atravessando) { // Se está atravessando uma parede
 			atravessando = false; // Não permite outro uso
 		}
 	}
+}
+
+//-------------------------------------------------------------------------------------//
+
+if(y > room_height * 1.5) global.morreu = true; // Se o player caiu pro abismo, F
+
+if(global.morreu) { // Fazer algo específico se o player morrer, no momento só reinicio a room
+	
+	global.morreu = false;
+	room_restart();
 }
