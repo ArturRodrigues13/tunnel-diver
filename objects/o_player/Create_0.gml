@@ -16,9 +16,11 @@ tempo = 0; // Quantidade de tempo que o player passou sem tocar o chão
 tempo_maximo = 10; // Tempo máximo permitido antes de considerar que o player está fora do chão
 
 parede = false; // Determina se o player está na parede ou não
+pular_parede = true; // Determina se o player pode pular em uma parede ou não
+pulando = false; // Verifica se o player está pulando ou não
 tempo_parede = 0; // Quantidade de tempo que o player passou fora de uma parede após tocar em uma
 tempo_parede_maximo = 6; // Tempo máximo permitido antes de considerar que o player está fora de uma parede
-// deslizar = 0;
+deslizar = 0; // Aumentar velocidade que o player desliza na parede
 parede_proxima = noone; // Variável para armazenar a instância de parede que o player está tocando
 
 //------------------------------------------------------------------------------------//

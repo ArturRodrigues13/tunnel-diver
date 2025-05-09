@@ -3,22 +3,62 @@ if(instance_exists(o_player)) {
 	segurando = o_player.intangible_time; // Atualiza ela pra quantidade de poder que o player pode usar
 }
 
-if(nivel_composto) { // Se o nivel tem mais de uma sala
+direcao = ""; // Apaga o valor todo frame
+
+sala_atual = array_length(direcao_array) + 1; // Determina a sala atual do jogo, o +1 é pra ficar bonitinho mesmo, tipo "sala 1" (dá muito mais trabalho kk)
+
+if((x + 640) < o_player.x) { // Saiu da câmera pela direita
 	
-	if(global.passou) { // se receber o sinal indicando que o player passou de sala
-		
-		switch string_char_at(direcoes,sala_atual) { // Pega o caractere na posição específica na string direções
-													 // 1 = direita, 2 = esquerda, 3 = cima, 4 = baixo
-			
-			case "1":
-				
-				sala_atual ++; // Indica que estamos na próxima sala
-				x += 640; // Avançar para a direita
-				global.passou = false; // Desliga o sinal;
-				break;
-		}
+	x += 640;
+	direcao = "direita";
+}
+
+if(o_player.x < x){ // Saiu da câmera pela esquerda
+	
+	x -= 640;
+	direcao = "esquerda";
+}
+
+if((y + 360) < o_player.y) { // Saiu da câmera por baixo
+	
+	y += 360;
+	direcao = "baixo";
+}
+
+if(o_player.y < y) { // Saiu da câmera por cima
+	
+	y -= 360;
+	direcao = "cima";
+}
+
+if(direcao != "") { // Se ele mudou de sala, coloca esse movimento no array
+
+	direcao_array[sala_atual - 1] = direcao;
+}
+
+if(direcao != "" && sala_atual > 1) { // Se ele foi pra outra sala 
+	
+	if(direcao_array[sala_atual - 2] == "direita" && direcao == "esquerda") { // Verifica movimentos reversos, ou seja, entrou em uma sala pela direita e voltou
+	
+		array_delete(direcao_array,sala_atual - 2,2); // Deleta tanto a direção que acabamos de colocar como a anterior
+	
+	} else if (direcao_array[sala_atual - 2] == "esquerda" && direcao == "direita") { // Verifica movimentos reversos, ou seja, entrou em uma sala pela esquerda e voltou
+	
+		array_delete(direcao_array,sala_atual - 2,2); // Deleta tanto a direção que acabamos de colocar como a anterior
+	
+	} else if (direcao_array[sala_atual-2] == "cima" && direcao == "baixo") { // Verifica movimentos reversos, ou seja, entrou em uma sala por cima e voltou
+	
+		array_delete(direcao_array,sala_atual - 2,2); // Deleta tanto a direção que acabamos de colocar como a anterior
+	
+	} else if (direcao_array[sala_atual-2] == "baixo" && direcao == "cima") { // Verifica movimentos reversos, ou seja, entrou em uma sala por baixo e voltou
+	
+		array_delete(direcao_array,sala_atual- 2,2); // Deleta tanto a direção que acabamos de colocar como a anterior
 	}
 }
 
-camera_set_view_pos(view_camera[0],x,y) // Faz a câmera seguir o objeto de controle (posição inicial = (0,0))
+if(sala_atual > array_length(direcao_array)) { // Se eu apaguei os elementos do array, quer dizer que voltei uma sala
+	
+	sala_atual --;
+} 
 
+camera_set_view_pos(view_camera[0],x,y) // Faz a câmera seguir o objeto de controle (posição inicial = (0,0))

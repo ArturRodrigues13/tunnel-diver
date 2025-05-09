@@ -1,4 +1,4 @@
-if(keyboard_check_pressed(ord("R"))) room_restart();
+if(keyboard_check_pressed(ord("R"))) room_restart(); // Teste hahaha
 
 var _left, _right, _jump, _jump_segurar, _intangible, _dir; // Variáveis de movimento e controle
 
@@ -8,6 +8,8 @@ _jump = keyboard_check_pressed(vk_space); // Pular
 _jump_segurar = keyboard_check(vk_space); // Verifica se o usuário está segurando o botão de pulo
 _intangible = keyboard_check(ord("J")); // Ativar intangibilidade
 _dir = (_right - _left); // Determina a direção que o player está andando
+
+if(velv < 0) pulando = true else pulando = false; // Se a velv é menor que 0, o player pulou
 
 if (recharging || intangible_touch || poderes[1] == 0) _intangible = false; // Controle do poder de intangibilidade
 
@@ -45,6 +47,11 @@ if(dash && dash_duration == 0) { // Se usou o dash
 		estado = "anda";
 	}
 }
+
+if(velh != 0){ // Inverte o xscale baseado na direção que estamos andando
+	
+	image_xscale = sign(velh);
+} 
 
 if(place_meeting(x+velh,y,o_wall)){
 	
@@ -90,7 +97,7 @@ if(place_meeting(x,y+1,o_wall) || place_meeting(x,y+1,o_traversable)) { // Playe
 	
 	if(!_intangible) chao = true;
 	if(!_intangible) pulo_duplo = true; // Pulo duplo liberado
-	// deslizar = 0;
+	deslizar = 0; 
 	tempo = 0;
 	with (o_wall) usada = false; // Reseta o pulo em todas as paredes
 	
@@ -111,7 +118,8 @@ if (chao = false) estado = "pula";
 if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false) { // Player está em uma parede horizontalmente e fora do chão
 
 	tempo_parede = 0;
-	// deslizar ++;
+	pular_parede = true;
+	deslizar ++; 
 	parede = true; // Avisa ao jogo que o player está em uma parede
 	var _esquerda = instance_place(x-1,y,o_wall); // Verifica se há uma parede na esquerda
 	var _direita = instance_place(x+1,y,o_wall); // Verifica se há uma parede na direita
@@ -130,13 +138,17 @@ if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false
 } else { // Player está fora da parede
 	
 	tempo_parede ++;
+	parede = false;
+	deslizar = 0;
 	
 	if(tempo_parede >= tempo_parede_maximo) { // Player passou muito tempo fora de uma parede
 
-		parede = false;
+		pular_parede = false;
 		tempo_parede = 0;
 	}
 }
+
+if(poderes[0] == 1) if(parede) if(!pulando) velv = grav + (deslizar / 30) // Aumenta lentamente a velocidade que o player desliza na parede
 
 if(!_jump_segurar && velv < 0) velv = max(velv,-altura_pulo/2); // Se o usuário não segurou o botão de pular, limita a altura pela metade
 
@@ -147,7 +159,7 @@ if(_jump){
 		velv = velv - altura_pulo; // Faz o pulo se o player estiver no chão
 		chao = false;
 		
-	} else if(!parede) { // Pulo fora da parede e fora do chão
+	} else if(!pular_parede) { // Pulo fora da parede e fora do chão
 
 		if(poderes[0] == 0) pulo_duplo = false;
 		
@@ -168,8 +180,6 @@ if(_jump){
 		
 	}
 }
-
-if(poderes[0] == 1) if(parede) if(velv > 0) velv = .7 // Deslizar em uma parede // deslizar / 60
 
 //------------------------------------------------------------------------------------//
 
@@ -285,4 +295,19 @@ if(global.morreu) { // Fazer algo específico se o player morrer, no momento só
 	
 	global.morreu = false;
 	room_restart();
+}
+
+//-------------------------------------------------------------------------------------//
+
+switch estado { // State machine ultra simples que se pá vai mudar (no momento só tô usando sprites de teste)
+	
+	case "parado":
+		sprite_index = spr_player_idle;
+		break;
+	case "anda":
+		sprite_index = spr_player_run;
+		break;
+	case "pula":
+		sprite_index = spr_player_jump;
+		break;
 }
