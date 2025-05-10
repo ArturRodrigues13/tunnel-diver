@@ -3,7 +3,7 @@
   "%Name":"spr_player_run",
   "bboxMode":2,
   "bbox_bottom":29,
-  "bbox_left":5,
+  "bbox_left":4,
   "bbox_right":17,
   "bbox_top":0,
   "collisionKind":1,

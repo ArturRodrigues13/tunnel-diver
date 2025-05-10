@@ -1,6 +1,6 @@
 if(keyboard_check_pressed(ord("R"))) room_restart(); // Teste hahaha
 
-var _left, _right, _jump, _jump_segurar, _intangible, _dir; // Variáveis de movimento e controle
+var _left, _right, _jump, _jump_segurar, _intangible, _dir, _esquerda, _direita; // Variáveis de movimento e controle
 
 _left = keyboard_check(ord("A")); // Mover pra esquerda
 _right = keyboard_check(ord("D")); // Mover pra direita
@@ -120,12 +120,13 @@ if (chao = false) {
 
 if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false) { // Player está em uma parede horizontalmente e fora do chão
 
+	estado = "wall_slide"
 	tempo_parede = 0;
 	pular_parede = true;
 	deslizar ++; 
 	parede = true; // Avisa ao jogo que o player está em uma parede
-	var _esquerda = instance_place(x-1,y,o_wall); // Verifica se há uma parede na esquerda
-	var _direita = instance_place(x+1,y,o_wall); // Verifica se há uma parede na direita
+	_esquerda = instance_place(x-1,y,o_wall); // Verifica se há uma parede na esquerda
+	_direita = instance_place(x+1,y,o_wall); // Verifica se há uma parede na direita
 	
     if (_esquerda != noone && _esquerda != parede_proxima) { // Detectou uma parede nova
 		
@@ -287,7 +288,7 @@ if(!_intangible) && place_meeting(x,y,o_traversable) { // Não está intangível
     }
 
     if (!_escapou) { // Se o player ficou preso na parede, mata ele
-        room_restart();
+        global.morreu = true;
     }
 
 }
@@ -299,7 +300,7 @@ if(y > room_height * 1.5) global.morreu = true; // Se o player caiu pro abismo, 
 if(global.morreu) { // Fazer algo específico se o player morrer, no momento só reinicio a room
 	
 	global.morreu = false;
-	room_restart();
+	instance_destroy();
 }
 
 //-------------------------------------------------------------------------------------//
@@ -317,5 +318,9 @@ switch estado {
 		break;
 	case "caindo":
 		sprite_index = spr_player_fall;
+		break;
+	case "wall_slide":
+		if(_esquerda != noone) image_xscale = 1 else if (_direita != noone) image_xscale = -1;
+		sprite_index = spr_player_wallslide;
 		break;
 }

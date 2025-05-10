@@ -14,8 +14,8 @@ if(tempo_seg = -1) { // Passou um minuto
 
 if !(tempo_min == 0 && tempo_seg == 0 && tempo_miliseg == 0) { // Se o tempo não acabou ainda, pode reiniciar o alarme
 	
-	alarm[0] = 6;
+	if(instance_exists(o_player)) alarm[0] = 6;
 } else {
 	
-	room_restart(); // Caso o contrário, reinicia a room
+	global.morreu = true; // Caso o contrário, reinicia a room
 }

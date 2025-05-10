@@ -65,6 +65,7 @@
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},},
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},
     {"id":{"name":"spr_player_run","path":"sprites/spr_player_run/spr_player_run.yy",},},
+    {"id":{"name":"spr_player_wallslide","path":"sprites/spr_player_wallslide/spr_player_wallslide.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_saw","path":"sprites/spr_saw/spr_saw.yy",},},
     {"id":{"name":"spr_traversable","path":"sprites/spr_traversable/spr_traversable.yy",},},
@@ -73,7 +74,6 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rm_level_3_1","path":"rooms/rm_level_3_1/rm_level_3_1.yy",},},
     {"roomId":{"name":"rm_level_1_0","path":"rooms/rm_level_1_0/rm_level_1_0.yy",},},
     {"roomId":{"name":"rm_level_1_1","path":"rooms/rm_level_1_1/rm_level_1_1.yy",},},
     {"roomId":{"name":"rm_level_1_2","path":"rooms/rm_level_1_2/rm_level_1_2.yy",},},
@@ -83,6 +83,7 @@
     {"roomId":{"name":"rm_level_2_1","path":"rooms/rm_level_2_1/rm_level_2_1.yy",},},
     {"roomId":{"name":"rm_level_2_2","path":"rooms/rm_level_2_2/rm_level_2_2.yy",},},
     {"roomId":{"name":"rm_level_2_3","path":"rooms/rm_level_2_3/rm_level_2_3.yy",},},
+    {"roomId":{"name":"rm_level_3_1","path":"rooms/rm_level_3_1/rm_level_3_1.yy",},},
     {"roomId":{"name":"rm_level_3_2","path":"rooms/rm_level_3_2/rm_level_3_2.yy",},},
   ],
   "templateType":"game",

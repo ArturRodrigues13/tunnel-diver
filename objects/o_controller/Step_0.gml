@@ -1,7 +1,16 @@
 if(instance_exists(o_player)) {
 
 	segurando = o_player.intangible_time; // Atualiza ela pra quantidade de poder que o player pode usar
+} else {
+	
+	morreu = true;
+	if(keyboard_check_pressed(ord("R"))) {
+		
+		room_restart();
+	}
 }
+
+if(!instance_exists(o_player)) exit
 
 direcao = ""; // Apaga o valor todo frame
 

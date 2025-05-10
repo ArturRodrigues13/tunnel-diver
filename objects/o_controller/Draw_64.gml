@@ -1,27 +1,31 @@
 draw_set_font(fnt_HUD);
 
-var _x = display_get_gui_width() / 2; // Metade da tela
-var _y = 50;
+var _x = display_get_gui_width() / 2; // Metade da tela horizontal
+var _y = 30;
+var _yy = display_get_gui_height() / 2; // Metade da tela vertical
 
-if(o_player.poderes[1] == 1) { // Se o player tem o poder desbloqueado, desenha a barra
+if(instance_exists(o_player)) {
 	
-	var bar_width = 200;
-	var bar_height = 30;
-	var bar_x = display_get_width() / 2 - bar_width / 2;
-	var bar_y = 40;
+	if(o_player.poderes[1] == 1) { // Se o player tem o poder desbloqueado, desenha a barra
+	
+		var bar_width = 200;
+		var bar_height = 30;
+		var bar_x = 125 - bar_width / 2;
+		var bar_y = 15;
 
 	
-	var progress = segurando / 90; // Calcula a largura da barra de progresso com base no tempo de habilidade do player
-	var current_bar_width = bar_width * progress;
+		var progress = segurando / 90; // Calcula a largura da barra de progresso com base no tempo de habilidade do player
+		var current_bar_width = bar_width * progress;
 
-	draw_set_color(c_gray);
-	draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, false); // Desenha a barra de fundo (barra completa)
+		draw_set_color(c_gray);
+		draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, false); // Desenha a barra de fundo (barra completa)
 
-	draw_set_color(c_red);
-	draw_rectangle(bar_x, bar_y, bar_x + current_bar_width, bar_y + bar_height, false); // Desenha a barra de progresso (barra atual)
+		draw_set_color(c_red);
+		draw_rectangle(bar_x, bar_y, bar_x + current_bar_width, bar_y + bar_height, false); // Desenha a barra de progresso (barra atual)
 
-	draw_set_color(c_maroon);
-	draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true); // Desenha o contorno da barra
+		draw_set_color(c_maroon);
+		draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true); // Desenha o contorno da barra
+	}
 }
 
 draw_set_color(c_black);
@@ -51,6 +55,17 @@ var centro_y = _y;
 
 // Desenhe o texto ajustando-o para o centro
 draw_text((centro_x - largura_texto / 2),(centro_y - altura_texto / 1.5) + 3, _t); // Tem uns números mágicos aí no meio porque essa fonte é meio bizarra, trocar futuramente
+
+if(morreu) {
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	draw_text_transformed(_x,_yy,"BINGA BONGA",3,3,0);
+	draw_text(_x,_yy + 100,"Pressione [R] Para Reiniciar");
+}
+
+draw_set_halign(-1);
+draw_set_valign(-1);
 
 draw_set_font(-1); // Volta a fonte padrão
 draw_set_color(c_white); // Volta a cor padrão
