@@ -29,7 +29,7 @@ if(dash_duration > 0) { // Se está usando o dash
 if(dash && dash_duration == 0) { // Se usou o dash 
 	
 	dash_duration = 10;
-	velh = _dir * dash_vel; // Faz o dash;
+	velh = image_xscale * dash_vel; // Faz o dash;
 	dash = false; // Não permite usar novamente logo em sequência
 	
 } else if (dash_duration == 0) { // Se não está usando o dash
@@ -95,8 +95,8 @@ y = y + velv; // Faz a movimentação regular do player verticalmente
 
 if(place_meeting(x,y+1,o_wall) || place_meeting(x,y+1,o_traversable)) { // Player está no chão
 	
-	if(!_intangible) chao = true;
-	if(!_intangible) pulo_duplo = true; // Pulo duplo liberado
+	chao = true;
+	pulo_duplo = true; // Pulo duplo liberado
 	deslizar = 0; 
 	tempo = 0;
 	with (o_wall) usada = false; // Reseta o pulo em todas as paredes
@@ -113,7 +113,10 @@ if(place_meeting(x,y+1,o_wall) || place_meeting(x,y+1,o_traversable)) { // Playe
 	}
 }
 
-if (chao = false) estado = "pula";
+if (chao = false) {
+	
+	if(velv < 0) estado = "pula" else if (velv > 0) estado = "caindo"
+} 
 
 if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false) { // Player está em uma parede horizontalmente e fora do chão
 
@@ -146,6 +149,33 @@ if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false
 		pular_parede = false;
 		tempo_parede = 0;
 	}
+}
+
+//------------------------------------------------------------------------------------//
+
+if(atravessando) { // Se está atravessando uma parede
+
+	chao = false;
+	pulo_duplo = false;
+	
+	tunelamento_proximo = instance_place(x,y,o_traversable);
+	
+	if(tunelamento_proximo != noone && !tunelamento_proximo.usada) {
+		
+		dash_stack ++;
+		tunelamento_proximo.usada = true;
+	}
+	
+	if(!place_meeting(x,y,o_traversable)) {
+		
+		atravessando = false;
+	}
+}
+	
+if(dash_stack > 0 && keyboard_check_pressed(ord("K"))) {
+		
+	dash_stack --;
+	dash = true;
 }
 
 if(poderes[0] == 1) if(parede) if(!pulando) velv = grav + (deslizar / 30) // Aumenta lentamente a velocidade que o player desliza na parede
@@ -195,7 +225,6 @@ if(keyboard_check_released(ord("J"))) intangible_touch = false; // Se soltou o b
 if(_intangible) { // Está usando o poder
 	
 	if(place_meeting(x,y,o_traversable)) atravessando = true; // Se está dentro de uma parede, tá atravessando ela
-	tempo_atravessado = 0;
 	intangible_time--; // Gasta o poder
 	
 	if(intangible_time <= 0) { // Gastou o máximo do poder
@@ -207,13 +236,6 @@ if(_intangible) { // Está usando o poder
 	
 	intangible_time++; // Recarrega o poder
 	
-	tempo_atravessado ++; // Aumenta o tempo ao sair de uma parede
-	
-	if(tempo_atravessado >= tempo_atravessado_maximo) { // Ao passar o tempo máximo, desliga a janela de dash
-		
-		atravessando = false;
-		tempo_atravessado = 0;
-	}
 }
 
 intangible_time = clamp(intangible_time,0,90); // Limita o tempo do poder
@@ -270,23 +292,6 @@ if(!_intangible) && place_meeting(x,y,o_traversable) { // Não está intangível
 
 }
 
-//------------------------------------------------------------------------------------//
-
-if(atravessando) { // Se está atravessando uma parede
-
-	chao = false;
-	pulo_duplo = false;
-	
-	if(!place_meeting(x,y,o_traversable)) { // Se saiu da parede mas continua com a janela de dash aberta
-		
-		if(keyboard_check_pressed(ord("K"))) {
-			
-			dash = true; // Usou o dash
-			atravessando = false; // Não permite outro uso
-		}
-	}
-}
-
 //-------------------------------------------------------------------------------------//
 
 if(y > room_height * 1.5) global.morreu = true; // Se o player caiu pro abismo, F
@@ -299,7 +304,7 @@ if(global.morreu) { // Fazer algo específico se o player morrer, no momento só
 
 //-------------------------------------------------------------------------------------//
 
-switch estado { // State machine ultra simples que se pá vai mudar (no momento só tô usando sprites de teste)
+switch estado {
 	
 	case "parado":
 		sprite_index = spr_player_idle;
@@ -309,5 +314,8 @@ switch estado { // State machine ultra simples que se pá vai mudar (no momento 
 		break;
 	case "pula":
 		sprite_index = spr_player_jump;
+		break;
+	case "caindo":
+		sprite_index = spr_player_fall;
 		break;
 }

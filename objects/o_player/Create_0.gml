@@ -8,8 +8,8 @@ acc = .6; // Acerelação
 dcc = .6; // Desacerelação
 grav = 0.4; // Força da gravidade
 
-altura_pulo = 9; // Autura do pulo 
-altura_pulo_duplo = 6; // Altura do pulo duplo
+altura_pulo = 7; // Autura do pulo 
+altura_pulo_duplo = 5; // Altura do pulo duplo
 pulo_duplo = true; // Determina se o player pode usar o pulo duplo
 chao = false; // Determina se o player está no chão ou não
 tempo = 0; // Quantidade de tempo que o player passou sem tocar o chão
@@ -37,8 +37,10 @@ recharge_time = 60; // Tempo mínimo que o player precisa esperar antes de poder
 atravessando = false; // Verifica se o player está atravassando uma parede
 tempo_atravessado = 0; // Quantidade de tempo que o player passou fora de uma parede após atravessar uma
 tempo_atravessado_maximo = 7; // Tempo máximo permitido antes de considerar que o player não pode mais usar o dash (provavelmente irá mudar)
+tunelamento_proximo = noone;
+dash_stack = 0;
 dash = false; // Verifica se o player usou o dash ou não
-dash_vel = 15; // Velocidade do dash
+dash_vel = 7; // Velocidade do dash
 dash_duration = 0; // Duração do dash
 
 //------------------------------------------------------------------------------------//
