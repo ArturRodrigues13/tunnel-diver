@@ -1,12 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"o_traversable",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"o_wall_collision",
+  "eventList":[],
   "managed":true,
-  "name":"o_traversable",
+  "name":"o_wall_collision",
   "overriddenProperties":[],
   "parent":{
     "name":"Colliders",
@@ -30,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_traversable",
-    "path":"sprites/spr_traversable/spr_traversable.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

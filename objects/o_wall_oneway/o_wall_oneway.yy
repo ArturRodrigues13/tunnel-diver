@@ -1,18 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"o_traversable",
+  "%Name":"o_wall_oneway",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_traversable",
+  "name":"o_wall_oneway",
   "overriddenProperties":[],
   "parent":{
     "name":"Colliders",
     "path":"folders/Objetos/Colliders.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_wall_collision",
+    "path":"objects/o_wall_collision/o_wall_collision.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_traversable",
-    "path":"sprites/spr_traversable/spr_traversable.yy",
+    "name":"spr_wall_oneway",
+    "path":"sprites/spr_wall_oneway/spr_wall_oneway.yy",
   },
   "spriteMaskId":null,
   "visible":true,

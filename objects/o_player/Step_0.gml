@@ -53,9 +53,9 @@ if(velh != 0){ // Inverte o xscale baseado na direção que estamos andando
 	image_xscale = sign(velh);
 } 
 
-if(place_meeting(x+velh,y,o_wall)){
+if(place_meeting(x+velh,y,o_wall_collision)){
 	
-	while(!place_meeting(x+sign(velh),y,o_wall)) x = x +sign(velh); // Aproxima o player lentamente da parede, gerando a colisão perfeita
+	while(!place_meeting(x+sign(velh),y,o_wall_collision)) x = x +sign(velh); // Aproxima o player lentamente da parede, gerando a colisão perfeita
 	
 	velh = 0; // Para o player ao chegar numa parede horizontalmente
 }
@@ -72,9 +72,9 @@ if(!_intangible) { // Checagem específica para paredes atravessáveis
 
 x = x + velh; // Faz a movimentação regular do player horizontalmente
 
-if(place_meeting(x,y+velv,o_wall)) {
+if(place_meeting(x,y+velv,o_wall_collision)) {
 	
-	while(!place_meeting(x,y+sign(velv),o_wall)) y = y + sign(velv); // Aproxima o player lentamente da parede, gerando a colisão perfeita
+	while(!place_meeting(x,y+sign(velv),o_wall_collision)) y = y + sign(velv); // Aproxima o player lentamente da parede, gerando a colisão perfeita
 	
 	velv = 0; // Para o player ao chegar numa parede verticalmente
 }
@@ -93,7 +93,7 @@ y = y + velv; // Faz a movimentação regular do player verticalmente
 
 //------------------------------------------------------------------------------------//
 
-if(place_meeting(x,y+1,o_wall) || place_meeting(x,y+1,o_traversable)) { // Player está no chão
+if(place_meeting(x,y+1,o_wall_collision)){ // Player está no chão
 	
 	chao = true;
 	pulo_duplo = true; // Pulo duplo liberado
@@ -152,6 +152,8 @@ if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false
 	}
 }
 
+if(poderes[0] == 1) if(parede) if(!pulando) velv = grav + (deslizar / 30) // Aumenta lentamente a velocidade que o player desliza na parede
+
 //------------------------------------------------------------------------------------//
 
 if(atravessando) { // Se está atravessando uma parede
@@ -179,7 +181,7 @@ if(dash_stack > 0 && keyboard_check_pressed(ord("K"))) {
 	dash = true;
 }
 
-if(poderes[0] == 1) if(parede) if(!pulando) velv = grav + (deslizar / 30) // Aumenta lentamente a velocidade que o player desliza na parede
+//------------------------------------------------------------------------------------//
 
 if(!_jump_segurar && velv < 0) velv = max(velv,-altura_pulo/2); // Se o usuário não segurou o botão de pular, limita a altura pela metade
 
@@ -254,8 +256,6 @@ if(recharging) { // Está recarregando
 
 recharge_time = clamp(recharge_time,0,60); // Limita o tempo de recarga
 
-//------------------------------------------------------------------------------------//
-
 if(!_intangible) && place_meeting(x,y,o_traversable) { // Não está intangível mas não saiu do bloco atravessável
 	
 	var _max_dist = 8; // Taxa de flexibilidade máxima, pra caso o player não esteja tanto pra dentro da parede
@@ -305,7 +305,7 @@ if(global.morreu) { // Fazer algo específico se o player morrer, no momento só
 
 //-------------------------------------------------------------------------------------//
 
-if(place_meeting(x,y,o_wall_locked) && (chaves > 0)) {
+if((place_meeting(x + 1,y,o_wall_locked) || place_meeting(x + 1,y,o_wall_locked)) && chaves > 0) {
 	
 	chaves--;
 	var wall = instance_nearest(x,y,o_wall_locked);

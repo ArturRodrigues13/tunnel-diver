@@ -34,10 +34,12 @@ if(instance_exists(o_player)) {
 			dist += 20;
 		}
 		
+		dist = 0;
+		
 		repeat(o_player.chaves) {
 			
-			draw_rectangle(735 + dist,15,745 + dist,45,false);
-			dist += 20;
+			draw_sprite_ext(spr_chave,0,1100 + dist,25,2,2,0,c_white,1);
+			dist += 40;
 		}
 	}
 }

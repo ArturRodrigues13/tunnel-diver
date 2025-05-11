@@ -9,10 +9,13 @@
   "name":"o_wall_locked",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Colliders",
+    "path":"folders/Objetos/Colliders.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_wall_collision",
+    "path":"objects/o_wall_collision/o_wall_collision.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
