@@ -3,6 +3,7 @@ draw_set_font(fnt_HUD);
 var _x = display_get_gui_width() / 2; // Metade da tela horizontal
 var _y = 30;
 var _yy = display_get_gui_height() / 2; // Metade da tela vertical
+var dist = 0;
 
 if(instance_exists(o_player)) {
 	
@@ -25,6 +26,19 @@ if(instance_exists(o_player)) {
 
 		draw_set_color(c_maroon);
 		draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true); // Desenha o contorno da barra
+		
+		repeat(o_player.dash_stack) {
+			
+			draw_set_color(c_purple);
+			draw_rectangle(235 + dist,15,245 + dist,45,false);
+			dist += 20;
+		}
+		
+		repeat(o_player.chaves) {
+			
+			draw_rectangle(735 + dist,15,745 + dist,45,false);
+			dist += 20;
+		}
 	}
 }
 

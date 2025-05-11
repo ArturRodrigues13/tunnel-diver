@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"o_traversable",
+  "%Name":"o_wall_locked",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_traversable",
+  "name":"o_wall_locked",
   "overriddenProperties":[],
   "parent":{
     "name":"Objetos",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_traversable",
-    "path":"sprites/spr_traversable/spr_traversable.yy",
+    "name":"spr_wall_locked",
+    "path":"sprites/spr_wall_locked/spr_wall_locked.yy",
   },
   "spriteMaskId":null,
   "visible":true,

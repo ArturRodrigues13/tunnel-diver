@@ -305,6 +305,15 @@ if(global.morreu) { // Fazer algo específico se o player morrer, no momento só
 
 //-------------------------------------------------------------------------------------//
 
+if(place_meeting(x,y,o_wall_locked) && (chaves > 0)) {
+	
+	chaves--;
+	var wall = instance_nearest(x,y,o_wall_locked);
+	wall.usada = true;
+}
+
+//-------------------------------------------------------------------------------------//
+
 switch estado {
 	
 	case "parado":

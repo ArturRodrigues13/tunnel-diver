@@ -1,0 +1,1 @@
+if(usada) instance_destroy();

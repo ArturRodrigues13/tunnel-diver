@@ -1,4 +1,4 @@
-global.player_poderes = [0,1]; // Isso vai mudar? provavelmente
+global.player_poderes = [1,1]; // Isso vai mudar? provavelmente
 
 global.timer_serra = 60; // Tempo que uma serra leva pra fazer seu movimento
 
