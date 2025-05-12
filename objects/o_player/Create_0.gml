@@ -1,5 +1,7 @@
 //------------------------------------------------------------------------------------//
 
+direita = false;
+esquerda = false;
 vel = 4; // Velocidade
 velv = 0; // Velocidade vertical
 velh = 0; // Velocidade horizontal
