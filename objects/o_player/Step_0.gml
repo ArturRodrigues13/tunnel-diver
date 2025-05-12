@@ -17,10 +17,6 @@ dash_duration = max(dash_duration - 1,0) // Diminui a duração do dash em 1 por
 
 //------------------------------------------------------------------------------------//
 
-if(_right) direita = true else direita = false;
-
-if(_left) esquerda = true else esquerda = false;
-
 if(dash_duration > 0) { // Se está usando o dash
 	
 	velv = 0; // Não tem gravidade aplicada
@@ -51,8 +47,6 @@ if(dash && dash_duration == 0) { // Se usou o dash
 		estado = "anda";
 	}
 }
-
-show_debug_message(velh)
 
 if(velh != 0){ // Inverte o xscale baseado na direção que estamos andando
 	
