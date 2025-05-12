@@ -27,7 +27,7 @@ if(instance_exists(o_player)) {
 		draw_set_color(c_maroon);
 		draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true); // Desenha o contorno da barra
 		
-		repeat(o_player.dash_stack) {
+		repeat(o_player.dash_stack) { // Desemha os stacks de dash no player na tela
 			
 			draw_set_color(c_purple);
 			draw_rectangle(235 + dist,15,245 + dist,45,false);
@@ -36,7 +36,7 @@ if(instance_exists(o_player)) {
 		
 		dist = 0;
 		
-		repeat(o_player.chaves) {
+		repeat(o_player.chaves) { // Desemha as chaves que o player acomulou na tela
 			
 			draw_sprite_ext(spr_chave,0,1100 + dist,25,2,2,0,c_white,1);
 			dist += 40;
@@ -72,7 +72,7 @@ var centro_y = _y;
 // Desenhe o texto ajustando-o para o centro
 draw_text((centro_x - largura_texto / 2),(centro_y - altura_texto / 1.5) + 3, _t); // Tem uns números mágicos aí no meio porque essa fonte é meio bizarra, trocar futuramente
 
-if(morreu) {
+if(morreu) { // Algum efeito visual pra quando ele morrer, no momento é só essa bobeira
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);

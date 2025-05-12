@@ -1,27 +1,27 @@
 frame += 1; // Aumenta um step
 
-if (frame >= tempo_total) { // Se acabou o movimento, faz a volta do caminho
+if (frame >= tempo_total) { // Se acabou o tempo, desliga/liga a turbina
 	
     frame = 0;
     ligado = !ligado;
 }
 
-var alvo = noone;
+var alvo = noone; // Player não detectado
 
-var forca = empurrao;
+var forca = empurrao; // Força do vento
 
 if(ligado) {
 	
-	switch(direcao) {
+	switch(direcao) { // Pegar a direção definida no próprio editor
 		
 		// Direita
 		case 0:
 	
-			alvo = collision_rectangle(x,y,x + distancia,y + sprite_height,o_player,false,false);
-	
-			if(alvo != noone) {
+			alvo = collision_rectangle(x,y,x + distancia,y + sprite_height,o_player,false,false); // Retângulo pra direita
+ 
+			if(alvo != noone) { // Achou o player
 				
-				with(alvo) {
+				with(alvo) { // Usa as próprias variáveis do player
 					
 					if(place_meeting(x+forca,y,o_wall_collision)){
 	
@@ -38,11 +38,11 @@ if(ligado) {
 		case 1:
 			
 			
-			alvo = collision_rectangle(x - distancia,y,x,y - sprite_height,o_player,false,false);
+			alvo = collision_rectangle(x - distancia,y,x,y - sprite_height,o_player,false,false); //  Retângulo pra esquerda
 	
-			if(alvo != noone) {
+			if(alvo != noone) { // Achou o player
 				
-				with(alvo) {
+				with(alvo) { // Usa as próprias variáveis do player
 					
 					if(place_meeting(x-forca,y,o_wall_collision)){
 	
@@ -58,11 +58,11 @@ if(ligado) {
 		// Baixo
 		case 2:
 			
-			alvo = collision_rectangle(x - sprite_height,y,x,y + distancia,o_player,false,false);
+			alvo = collision_rectangle(x - sprite_height,y,x,y + distancia,o_player,false,false); //  Retângulo pra baixo
 	
-			if(alvo != noone) {
+			if(alvo != noone) { // Achou o player
 				
-				with(alvo) {
+				with(alvo) { // Usa as próprias variáveis do player
 					
 					if(place_meeting(x,y+forca,o_wall_collision)) {
 	
@@ -72,7 +72,7 @@ if(ligado) {
 					}
 					
 					y += forca;
-					velh = lerp(velh,0,.5)
+					velh = lerp(velh,0,.5) // Deixa o player mais lento, já que o vento tá empurrando ele pra baixo
 				}
 			}
 			break;
@@ -80,11 +80,11 @@ if(ligado) {
 		// Cima
 		case 3: 
 		
-			alvo = collision_rectangle(x,y - distancia,x + sprite_height,y,o_player,false,false);
+			alvo = collision_rectangle(x,y - distancia,x + sprite_height,y,o_player,false,false); // Retângulo pra cima
 	
-			if(alvo != noone) {
+			if(alvo != noone) { // Achou o player
 				
-				with(alvo) {
+				with(alvo) { // Usa as próprias variáveis do player
 					
 					if(place_meeting(x,y-forca,o_wall_collision)) {
 	
@@ -93,7 +93,7 @@ if(ligado) {
 						forca = 0; // Para o player ao chegar numa parede verticalmente
 					}
 					
-					velv = 0;
+					velv = 0; // Desliga o efeito da gravidade
 					y -= forca;
 				}
 			}

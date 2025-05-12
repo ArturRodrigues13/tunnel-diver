@@ -1,1 +1,1 @@
-sprite_index = -1;
+sprite_index = -1; // Não tem colisão nem sprite

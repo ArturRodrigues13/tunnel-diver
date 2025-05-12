@@ -123,7 +123,7 @@ if((place_meeting(x-1,y,o_wall) || place_meeting(x+1,y,o_wall)) && chao == false
 	estado = "wall_slide"
 	tempo_parede = 0;
 	pular_parede = true;
-	deslizar ++; 
+	deslizar ++; // Aumenta a velocidade do player se ele ficar muito tempo na parede
 	parede = true; // Avisa ao jogo que o player está em uma parede
 	_esquerda = instance_place(x-1,y,o_wall); // Verifica se há uma parede na esquerda
 	_direita = instance_place(x+1,y,o_wall); // Verifica se há uma parede na direita
@@ -161,21 +161,21 @@ if(atravessando) { // Se está atravessando uma parede
 	chao = false;
 	pulo_duplo = false;
 	
-	tunelamento_proximo = instance_place(x,y,o_traversable);
+	tunelamento_proximo = instance_place(x,y,o_traversable); // Pega a parede que ele tá atravessando
 	
-	if(tunelamento_proximo != noone && !tunelamento_proximo.usada) {
+	if(tunelamento_proximo != noone && !tunelamento_proximo.usada) { // Se ainda não pegou a "energia" da parede
 		
-		dash_stack ++;
+		dash_stack ++; // Ganha um dash
 		tunelamento_proximo.usada = true;
 	}
 	
-	if(!place_meeting(x,y,o_traversable)) {
+	if(!place_meeting(x,y,o_traversable)) { // Se saiu da parede, desliga a verificação
 		
 		atravessando = false;
 	}
 }
 	
-if(dash_stack > 0 && keyboard_check_pressed(ord("K"))) {
+if(dash_stack > 0 && keyboard_check_pressed(vk_shift)) { // Usa o dash
 		
 	dash_stack --;
 	dash = true;
@@ -305,7 +305,7 @@ if(global.morreu) { // Fazer algo específico se o player morrer, no momento só
 
 //-------------------------------------------------------------------------------------//
 
-if((place_meeting(x + 1,y,o_wall_locked) || place_meeting(x + 1,y,o_wall_locked)) && chaves > 0) {
+if((place_meeting(x + 1,y,o_wall_locked) || place_meeting(x + 1,y,o_wall_locked)) && chaves > 0) { // Abre a porta se o player tiver uma chave
 	
 	chaves--;
 	var wall = instance_nearest(x,y,o_wall_locked);
@@ -314,7 +314,7 @@ if((place_meeting(x + 1,y,o_wall_locked) || place_meeting(x + 1,y,o_wall_locked)
 
 //-------------------------------------------------------------------------------------//
 
-switch estado {
+switch estado { // Isso aqui com certeza vai mudar, mas serve por enquanto
 	
 	case "parado":
 		sprite_index = spr_player_idle;
@@ -329,7 +329,7 @@ switch estado {
 		sprite_index = spr_player_fall;
 		break;
 	case "wall_slide":
-		if(_esquerda != noone) image_xscale = 1 else if (_direita != noone) image_xscale = -1;
+		if(_esquerda != noone) image_xscale = 1 else if (_direita != noone) image_xscale = -1; // Inverte pra direção correta
 		sprite_index = spr_player_wallslide;
 		break;
 }

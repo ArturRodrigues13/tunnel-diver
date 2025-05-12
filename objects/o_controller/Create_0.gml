@@ -5,7 +5,7 @@ tempo_miliseg = 0; // Armazenar os "milissegundos"
 alarm[0] = 6 // A cada 6 frames fazer uma contagem de tempo
 
 segurando = 0; // Determina o quanto a tecla de intangibilidade está sendo segurada
-morreu = false;
+morreu = false; // Verifica se o player tá vivo
 
 sala_atual = 0; // 0 = Sala padrão, se tiver mais de uma vai aumentando de 1 em 1;
 direcao = ""; // Última direção que o player avançou
