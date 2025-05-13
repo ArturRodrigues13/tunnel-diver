@@ -8,6 +8,3 @@ movimento = blocos * global.tamanho_blocos; // Quantidade de blocos que ela vai 
 tempo_total = global.timer_obstacles / frequencia; // Quantas vezes ela vai fazer o movimento nesse tempo
 frame = 0; // Contador de steps
 sentido = 1; // Sentido inicial da serra
-
-
-
