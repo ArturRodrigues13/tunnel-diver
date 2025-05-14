@@ -10,7 +10,7 @@ switch (image_angle) {
 		
 		x_1 = x;
 		y_1 = y - 2;
-		x_2 = x + sprite_width;
+		x_2 = x + sprite_width - 1;
 		y_2 = y;
 		break;
 	
