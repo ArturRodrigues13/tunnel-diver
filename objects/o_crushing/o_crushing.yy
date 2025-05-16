@@ -6,8 +6,8 @@
   "name":"o_crushing",
   "overriddenProperties":[],
   "parent":{
-    "name":"Obstacles",
-    "path":"folders/Objetos/Obstacles.yy",
+    "name":"Crushing Piston",
+    "path":"folders/Objetos/Obstacles/Crushing Piston.yy",
   },
   "parentObjectId":{
     "name":"o_wall_collision",

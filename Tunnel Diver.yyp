@@ -22,6 +22,7 @@
     {"$GMFolder":"","%Name":"Objetos","folderPath":"folders/Objetos.yy","name":"Objetos","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Colliders","folderPath":"folders/Objetos/Colliders.yy","name":"Colliders","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Obstacles","folderPath":"folders/Objetos/Obstacles.yy","name":"Obstacles","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Crushing Piston","folderPath":"folders/Objetos/Obstacles/Crushing Piston.yy","name":"Crushing Piston","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Particle Systems","folderPath":"folders/Particle Systems.yy","name":"Particle Systems","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sequências","folderPath":"folders/Sequências.yy","name":"Sequências","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -37,7 +38,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.0.190",
+    "IDEVersion":"2024.13.1.193",
   },
   "name":"Jogo!",
   "resources":[
@@ -52,6 +53,7 @@
     {"id":{"name":"o_player_spawn","path":"objects/o_player_spawn/o_player_spawn.yy",},},
     {"id":{"name":"o_player","path":"objects/o_player/o_player.yy",},},
     {"id":{"name":"o_saw","path":"objects/o_saw/o_saw.yy",},},
+    {"id":{"name":"o_sensor_laser","path":"objects/o_sensor_laser/o_sensor_laser.yy",},},
     {"id":{"name":"o_traversable","path":"objects/o_traversable/o_traversable.yy",},},
     {"id":{"name":"o_wall_collision","path":"objects/o_wall_collision/o_wall_collision.yy",},},
     {"id":{"name":"o_wall_locked","path":"objects/o_wall_locked/o_wall_locked.yy",},},
@@ -83,6 +85,7 @@
     {"id":{"name":"spr_player_run","path":"sprites/spr_player_run/spr_player_run.yy",},},
     {"id":{"name":"spr_player_wallslide","path":"sprites/spr_player_wallslide/spr_player_wallslide.yy",},},
     {"id":{"name":"spr_saw","path":"sprites/spr_saw/spr_saw.yy",},},
+    {"id":{"name":"spr_sensor_laser","path":"sprites/spr_sensor_laser/spr_sensor_laser.yy",},},
     {"id":{"name":"spr_traversable","path":"sprites/spr_traversable/spr_traversable.yy",},},
     {"id":{"name":"spr_wall_locked","path":"sprites/spr_wall_locked/spr_wall_locked.yy",},},
     {"id":{"name":"spr_wall_oneway","path":"sprites/spr_wall_oneway/spr_wall_oneway.yy",},},
