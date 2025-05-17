@@ -4,7 +4,7 @@ if (frame >= tempo_total) { // Se acabou o tempo, desliga/liga a turbina
 	
     frame = 0;
     ligado = !ligado;
-	if(ligado) tempo_total = t_ligado else tempo_total = t_desligado;
+	if(ligado) tempo_total = t_ligado else tempo_total = t_desligado; // Define o tempo com base se tá ligando ou desligando
 }
 
 var alvo = noone; // Player não detectado

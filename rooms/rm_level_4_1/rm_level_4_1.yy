@@ -27,7 +27,6 @@
     {"name":"inst_57938943","path":"rooms/rm_level_4_1/rm_level_4_1.yy",},
     {"name":"inst_2940CA25","path":"rooms/rm_level_4_1/rm_level_4_1.yy",},
     {"name":"inst_264B42C5","path":"rooms/rm_level_4_1/rm_level_4_1.yy",},
-    {"name":"inst_1C38D6C1","path":"rooms/rm_level_4_1/rm_level_4_1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -66,9 +65,6 @@
         {"$GMRInstance":"v2","%Name":"inst_57938943","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_57938943","objectId":{"name":"o_electrified_platform","path":"objects/o_electrified_platform/o_electrified_platform.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":7.0,"scaleY":1.0,"x":256.0,"y":288.0,},
         {"$GMRInstance":"v2","%Name":"inst_2940CA25","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2940CA25","objectId":{"name":"o_crushing_piston","path":"objects/o_crushing_piston/o_crushing_piston.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":1.0,"x":896.0,"y":192.0,},
         {"$GMRInstance":"v2","%Name":"inst_264B42C5","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_264B42C5","objectId":{"name":"o_sensor_laser","path":"objects/o_sensor_laser/o_sensor_laser.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":928.0,"y":96.0,},
-        {"$GMRInstance":"v2","%Name":"inst_1C38D6C1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1C38D6C1","objectId":{"name":"o_air_turbine","path":"objects/o_air_turbine/o_air_turbine.yy",},"properties":[
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"o_air_turbine","path":"objects/o_air_turbine/o_air_turbine.yy",},"propertyId":{"name":"t_ligado","path":"objects/o_air_turbine/o_air_turbine.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"13",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":320.0,},
       ],"layers":[],"name":"Obstacles","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4288256409,"depth":500,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

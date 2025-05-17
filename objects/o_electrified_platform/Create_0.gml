@@ -1,10 +1,10 @@
-t_ligado *= global.timer_obstacles;
-t_desligado *= global.timer_obstacles;
-tempo_total = t_desligado;
+t_ligado *= global.timer_obstacles; // Tempo ligado
+t_desligado *= global.timer_obstacles; // Tempo desligado
+tempo_total = t_desligado; // Começa desligada
 frame = 0; // Contador de steps
 ligado = false; // Verifica se tá ligado ou desligado
 
-switch (image_angle) {
+switch (image_angle) { // Meio gambiarra mas é o que está tendo, depois eu ajeito (mentira)
 	
 	case 0:
 		

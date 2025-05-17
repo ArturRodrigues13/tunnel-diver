@@ -1,14 +1,18 @@
+// Pega a distância pro chão automáticamente daqui
+
 distancia = 0;
 var max_dist = 1000;
 
 while(distancia <= max_dist) {
 	
-	var alvo = collision_point(x,y + sprite_height +distancia,o_wall,false,false);
+	var alvo = collision_point(x,y + sprite_height + distancia,o_wall,false,false); // Checa se chegou no chão
 	
-	if(alvo != noone) break;
+	if(alvo != noone) break; // Quando achar, quebra o loop
 	
-	distancia ++;
+	distancia ++; // Incrementa a distãncia de 1 em 1 pra garantir uma distãncia precisa
 }
+
+// até aqui, código lindo esse
 
 inst = instance_create_layer(x,y + sprite_height,"Obstacles",o_crushing); // Cria a instância da parte "esmagadora" do pistão e a armazena em uma variável
 
@@ -25,3 +29,6 @@ descendo = true; // Define que ele começa descendo
 tempo_total = t_descendo; // Como ele começa descendo, define o tempo_total inicial coorespondente
 
 frame = 0; // Contador de steps
+
+pode_tremer = false; // Booleano pra verificar se o objeto tá na tela
+tela_tremeu = false; // Apenas definir se a tela tá tremendo ou não

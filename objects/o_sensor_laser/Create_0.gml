@@ -1,3 +1,5 @@
+// Pega a distância pro chão automáticamente daqui
+
 distancia = 0;
 var max_dist = 1000;
 
@@ -9,3 +11,5 @@ while(distancia <= max_dist) {
 	
 	distancia ++;
 }
+
+// até aqui

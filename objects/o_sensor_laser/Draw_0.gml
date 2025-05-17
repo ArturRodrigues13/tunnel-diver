@@ -1,22 +1,13 @@
+// Isso aqui vai mudar? tô pensando ainda, tá muito igual Katana Zero, me sinto um ladrão
+
 draw_self();
 
-var feixe = 6;
-var espacamento = 4;
-var y0 = y + sprite_height + 2;
+var feixe = 6; // Tamanho de cada feixe
+var espacamento = 4; // Distância entre cada feixe
+var y0 = y + sprite_height + 2; // Começa nessa posição
 
-for (var dist = 0; dist < distancia; dist += feixe + espacamento) {
+for (var dist = 0; dist < distancia; dist += feixe + espacamento) { // Desenha todos eles até encontrar o chão
 	
-    draw_set_color(c_red);
+    draw_set_color(c_red); 
     draw_line(x, y0 + dist, x, y0 + dist + feixe);
-}
-
-/*
-var dist = 0;
-
-while (dist < distancia) {
-	
-	draw_set_color(c_red);
-	draw_line(x,y + sprite_height + 2 + dist,x, y + sprite_height + 6 + dist);
-	
-	dist += distancia / 4;
 }

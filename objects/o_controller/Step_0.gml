@@ -1,3 +1,5 @@
+camera_set_view_pos(view_camera[0],x,y) // Faz a câmera seguir o objeto de controle (posição inicial = (0,0))
+
 if(instance_exists(o_player)) {
 
 	segurando = o_player.intangible_time; // Atualiza ela pra quantidade de poder que o player pode usar
@@ -10,7 +12,9 @@ if(instance_exists(o_player)) {
 	}
 }
 
-if(!instance_exists(o_player)) exit
+timer_shake = max(timer_shake -1,0); // Diminui o timer_shake em 1 por frame, não passando de 0
+
+if(!instance_exists(o_player)) exit // Player morreu = isso é inútil
 
 direcao = ""; // Apaga o valor todo frame
 
@@ -19,24 +23,28 @@ sala_atual = array_length(direcao_array) + 1; // Determina a sala atual do jogo,
 if((x + 640) < o_player.x) { // Saiu da câmera pela direita
 	
 	x += 640;
+	x_atual = x;
 	direcao = "direita";
 }
 
 if(o_player.x < x){ // Saiu da câmera pela esquerda
 	
 	x -= 640;
+	x_atual = x;
 	direcao = "esquerda";
 }
 
 if((y + 360) < o_player.y) { // Saiu da câmera por baixo
 	
 	y += 360;
+	y_atual = y;
 	direcao = "baixo";
 }
 
 if(o_player.y < y) { // Saiu da câmera por cima
 	
 	y -= 360;
+	y_atual = y;
 	direcao = "cima";
 }
 
@@ -65,9 +73,7 @@ if(direcao != "" && sala_atual > 1) { // Se ele foi pra outra sala
 	}
 }
 
-if(sala_atual > array_length(direcao_array)) { // Se eu apaguei os elementos do array, quer dizer que voltei uma sala
+if(sala_atual > array_length(direcao_array) + 1) { // Se eu apaguei os elementos do array, quer dizer que voltei uma sala
 	
 	sala_atual --;
 } 
-
-camera_set_view_pos(view_camera[0],x,y) // Faz a câmera seguir o objeto de controle (posição inicial = (0,0))

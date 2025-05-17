@@ -31,7 +31,6 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"minutos","filters":[],"listItems":[],"multiselect":false,"name":"minutos","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0 ","varType":1,},
     {"$GMObjectProperty":"v1","%Name":"segundos","filters":[],"listItems":[],"multiselect":false,"name":"segundos","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"5","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"nivel_composto","filters":[],"listItems":[],"multiselect":false,"name":"nivel_composto","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
