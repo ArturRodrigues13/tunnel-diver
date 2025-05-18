@@ -1,8 +1,8 @@
 // Só pra caso eu queira ver a colisão
 
-/*
-
 draw_self();
+
+/*
 
 draw_set_color(c_blue);
 draw_set_alpha(.5);

@@ -5,7 +5,7 @@ var max_dist = 1000;
 
 while(distancia <= max_dist) {
 	
-	var alvo = collision_point(x,y + sprite_height +distancia,o_wall,false,false);
+	var alvo = collision_point(x,y + distancia,o_wall,false,false);
 	
 	if(alvo != noone) break;
 	
@@ -13,3 +13,5 @@ while(distancia <= max_dist) {
 }
 
 // até aqui
+
+variacao = 0;
